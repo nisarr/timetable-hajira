@@ -31,27 +31,34 @@
                 <input type="text" name="teacher_name" value="{{$teacher->teacher_name}}" class="form-control" placeholder="Name">
               </div>
             </div>
-
             <div class="col-sm-4">
+                <div class="form-group">
+                  <label for="input-14">Department</label>
+                 <select name="depart_id" id="" class="form-control form-control-square">
+                   @foreach($departments as $department)
+                   <option value="{{$department->id}}"<?php if($department->id == $teacher->id) echo 'selected'; ?>>{{$department->department_name}}</option>
+                   @endforeach
+                 </select>
+                </div>
+              </div>
+            
+          </div>
+            <div class="row">
+              <div class="col-sm-4">
               <div class="form-group">
                 <label for="input-14"> Email</label>
                 <input type="email" name="email" value="{{$teacher->email}}" class="form-control form-control-square"  placeholder="e.g @gmai.com">
               </div>
             </div>
-
-            <div class="col-sm-4">
-              <div class="form-group">
-                <label for="input-14">Department</label>
-               <select name="depart_id" id="" class="form-control form-control-square">
-                 @foreach($departments as $department)
-                 <option value="{{$department->id}}"<?php if($department->id == $teacher->id) echo 'selected'; ?>>{{$department->department_name}}</option>
-                 @endforeach
-               </select>
+              <div class="col-sm-4">
+                <div class="form-group">
+                  <label for="input-14"> Password</label>
+                  <input type="password" name="password" class="form-control form-control-square"  placeholder="Password">
+                </div>
               </div>
-            </div>  
-
-          </div>
-
+            </div>
+ 
+ 
           <div class="row">
           <div class="col-sm-4">
               <div class="form-group">

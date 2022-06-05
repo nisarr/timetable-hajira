@@ -33,13 +33,6 @@
 
             <div class="col-sm-4">
               <div class="form-group">
-                <label for="input-14"> Email</label>
-                <input type="email" name="email" class="form-control form-control-square"  placeholder="e.g @gmai.com">
-              </div>
-            </div>
-
-            <div class="col-sm-4">
-              <div class="form-group">
                 <label for="input-14">Department</label>
                <select name="depart_id" id="" class="form-control form-control-square">
                  @foreach($departments as $department)
@@ -48,6 +41,24 @@
                </select>
               </div>
             </div>  
+
+          </div>
+
+          <div class="row">
+            <div class="col-sm-4">
+                <div class="form-group">
+                  <label for="input-14"> Email</label>
+                  <input type="email" name="email" class="form-control form-control-square"  placeholder="e.g @gmai.com">
+                  
+                </div>
+              </div>
+              <div class="col-sm-4">
+                <div class="form-group">
+                  <label for="input-14"> Password</label>
+                  <input type="password" name="password" class="form-control form-control-square"  placeholder="Password">
+                </div>
+              </div>
+              
 
           </div>
 
