@@ -75,7 +75,11 @@ class TeacherController extends Controller
      */
     public function edit($id)
     {
-        $teacher = Teacher::find($id);
+        $teacher = Teacher::where('id',$id)->first();
+        if(!$teacher){
+            return redirect()->route('teachers.index');
+        }
+        // dd($teacher);
         $departments = Department::all();
         return view('admin.teacher.edit',compact('teacher','departments'));
     }

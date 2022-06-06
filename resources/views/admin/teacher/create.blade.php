@@ -21,6 +21,7 @@
       <div class="card-body">
         <div class="card-title"><i class="fa fa-user-circle-o"></i> Add Teacher</div>
         <hr>
+        
         <form method="post" action="{{route('teachers.store')}}" enctype="multipart/form-data">
           @csrf
           <div class="row">
@@ -49,7 +50,7 @@
                 <div class="form-group">
                   <label for="input-14"> Email</label>
                   <input type="email" name="email" class="form-control form-control-square"  placeholder="e.g @gmai.com">
-                  
+                  <div class=""></div>
                 </div>
               </div>
               <div class="col-sm-4">
@@ -58,8 +59,6 @@
                   <input type="password" name="password" class="form-control form-control-square"  placeholder="Password">
                 </div>
               </div>
-              
-
           </div>
 
           <div class="row">
@@ -69,9 +68,6 @@
                 <input type="file" name="image" class="form-control" placeholder="Name">
               </div>
             </div>
-
-         
-
           </div>
 
           <div class="form-group">
@@ -81,6 +77,7 @@
             </div>
           </div>
         </form>
+
       </div>
     </div>
   </div>

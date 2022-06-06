@@ -29,11 +29,11 @@ Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::resource('rooms', RoomsController::class);
-Route::resource('departments', DepartmentController::class);
-Route::resource('teachers', TeacherController::class);
-Route::resource('courses', CoursesController::class);
-Route::resource('timeslots', TimeController::class);
-Route::resource('classes', ClasseController::class);
+Route::resource('departments', DepartmentController::class)->middleware('auth');
+Route::resource('teachers', TeacherController::class)->middleware('auth');
+Route::resource('courses', CoursesController::class)->middleware('auth');
+Route::resource('timeslots', TimeController::class)->middleware('auth');
+Route::resource('classes', ClasseController::class)->middleware('auth');
 
 Route::get('/timeshow', [App\Http\Controllers\TimeController::class, 'timeshow']);
 
