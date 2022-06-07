@@ -2,7 +2,7 @@
 <footer class="footer">
       <div class="container">
         <div class="text-center">
-          Copyright © {{ date('Y') }} By Hajira Muqaddas💖
+          Copyright © {{ date('Y') }} By Hajira Muqadas💖
         </div>
       </div>
     </footer>

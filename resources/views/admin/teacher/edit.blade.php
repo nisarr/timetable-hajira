@@ -6,11 +6,11 @@
     <!-- Breadcrumb-->
     <div class="row pt-2 pb-2">
       <div class="col-sm-9">
-        <h4 class="page-title">Update New Teacher</h4>
+        <h4 class="page-title">Update Teacher</h4>
       </div>
       <div class="col-sm-3">
         <div class="float-sm-right">
-          <a href="{{url('teacher')}}" class="btn btn-gradient-bloody waves-effect waves-light m-1"> <i aria-hidden="true" class="fa fa-eye"></i> View Teacher</a>
+          <a href="{{url('teachers')}}" class="btn btn-gradient-bloody waves-effect waves-light m-1"> <i aria-hidden="true" class="fa fa-eye"></i> View Teacher</a>
         </div>
       </div>
     </div>
@@ -28,7 +28,7 @@
             <div class="col-sm-4">
               <div class="form-group">
                 <label for="input-13">Name</label>
-                <input type="text" name="teacher_name" value="{{$teacher->teacher_name}}" class="form-control" placeholder="Name">
+                <input type="text" name="teacher_name" value="{{$teacher->name}}" class="form-control" placeholder="Name">
               </div>
             </div>
             <div class="col-sm-4">

@@ -3,11 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\Course;
+use App\Models\Classes;
 use App\Models\Teacher;
 use App\Models\Department;
 use Illuminate\Http\Request;
 
-class TeacherController extends Controller
+class StudentController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,8 +18,8 @@ class TeacherController extends Controller
      */
     public function index()
     {
-        $teachers = User::where('role',User::ROLE_TEACHER)->get();
-        return view('admin.teacher.index',compact('teachers'));
+        $students = User::where('role',User::ROLE_STUDENT)->get();
+        return view('admin.student.index',compact('students'));
     }
 
     /**
@@ -27,9 +29,9 @@ class TeacherController extends Controller
      */
     public function create()
     {
-        $departments = Department::all();
-        // dd($departments);
-        return view('admin.teacher.create',compact('departments'));
+        $classes = Classes::all();
+        $courses = Course::all();
+        return view('admin.student.create',compact('classes','courses'));
     }
 
     /**
@@ -40,23 +42,28 @@ class TeacherController extends Controller
      */
     public function store(Request $request)
     {
-        $teachers = new User;
+        $student = new User;
         if($request->hasFile('image'))
         {
             $image = $request->image;
             $name = time().'.'.$image->getClientOriginalExtension();
             $destinationPath = public_path('/teacher/profile');
             $image->move($destinationPath, $name);
-            $teachers->image = $name;
+            $student->image = $name;
         }
-        $teachers->name = $request->teacher_name;
-        $teachers->email = $request->email;
-        $teachers->depart_id = $request->depart_id;
-        $teachers->password = bcrypt($request->password);
-        $teachers->role = User::ROLE_TEACHER;
-        $teachers->save();
-        toastr()->success('Teacher Added successfully!');
-        return redirect('teacher');
+        $student->name = $request->teacher_name;
+        $student->email = $request->email;
+        $student->class_id = $request->class_id;
+    
+        $student->password = bcrypt($request->password);
+        $student->role = User::ROLE_STUDENT;
+        $student->save();
+
+        // sync courses
+        $student->updateCourses($request->courses);
+
+        toastr()->success('Student Added successfully!');
+        return redirect('students');
     }
 
     /**
@@ -78,13 +85,17 @@ class TeacherController extends Controller
      */
     public function edit($id)
     {
-        $teacher = User::where('id',$id)->first();
-        if(!$teacher){
-            return redirect()->route('teachers.index');
+        $student = User::where('id',$id)->where('role',User::ROLE_STUDENT)->with('courses_ids')->first();
+        if(!$student){
+            return redirect()->route('students.index');
         }
-        // dd($teacher);
-        $departments = Department::all();
-        return view('admin.teacher.edit',compact('teacher','departments'));
+      
+        // dd($student);
+        $classes = Classes::all();
+        $courses = Course::all();
+        $student_courses = $student->courses_ids->pluck('course_id')->toArray();
+    
+        return view('admin.student.edit',compact('student','classes','courses','student_courses'));
     }
 
     /**
@@ -96,26 +107,33 @@ class TeacherController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $teachers = User::find($id);
+        
+        $student = User::find($id);
         if($request->hasFile('image'))
         {
             $image = $request->image;
             $name = time().'.'.$image->getClientOriginalExtension();
             $destinationPath = public_path('/teacher/profile');
             $image->move($destinationPath, $name);
-            $teachers->image = $name;
+            $student->image = $name;
         }
-        $teachers->name = $request->teacher_name;
-        $teachers->email = $request->email;
-        $teachers->depart_id = $request->depart_id;
+        $student->name = $request->teacher_name;
+        $student->email = $request->email;
+        $student->class_id = $request->class_id;
+        
 
         if($request->password){
-            $teachers->password = bcrypt($request->password);
+            $student->password = bcrypt($request->password);
         }
 
-        $teachers->save();
-        toastr()->success('Teacher Updated successfully!');
-        return redirect('teachers');
+        $student->save();
+
+        // sync courses
+        $student->updateCourses($request->courses);
+
+        toastr()->success('Student Updated successfully!');
+       
+        return redirect()->back();
 
     }
 
@@ -127,9 +145,11 @@ class TeacherController extends Controller
      */
     public function destroy($id)
     {
-        $teachers = User::find($id);
-        $teachers->delete();
-        toastr()->error('Teacher Deleted successfully!');
-        return redirect('teachers');
+        $student = User::find($id);
+        $student->delete();
+        toastr()->error('Student Deleted successfully!');
+        return redirect('students');
     }
+
+    
 }

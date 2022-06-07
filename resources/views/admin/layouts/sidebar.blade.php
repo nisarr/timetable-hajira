@@ -39,8 +39,18 @@
     <!-- teachers start-->
     <li>
       <a href="{{url('/teachers')}}" class="waves-effect">
-        <i class="fa fa-users"></i>
+        <i class="fa fa-user"></i>
         <span>Teachers</span>
+      </a>
+    </li>
+
+    <!-- teachers end-->
+
+     <!-- teachers start-->
+     <li>
+      <a href="{{url('/students')}}" class="waves-effect">
+        <i class="fa fa-users"></i>
+        <span>Students</span>
       </a>
     </li>
 

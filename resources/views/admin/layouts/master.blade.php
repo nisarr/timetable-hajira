@@ -33,7 +33,15 @@
     <div id="wrapper">
     
         @include('admin.layouts.header')
-        @include('admin.layouts.sidebar')
+        
+        @if(Auth::user()->role == 'student')
+          @include('admin.layouts.sidebar_student')
+        @elseif(Auth::user()->role == 'teacher')
+          @include('admin.layouts.sidebar_teacher')
+        @else
+          @include('admin.layouts.sidebar')
+        @endif
+
         @yield('content')
         @include('admin.layouts.footer')
 
@@ -95,6 +103,8 @@
        $('#default-datatable').DataTable();
 
        $('.single-select').select2();
+       
+       $('.multi-select').select2();
 
        var table = $('#example').DataTable( {
         lengthChange: false,

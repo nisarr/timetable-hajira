@@ -10,7 +10,7 @@ class TimeSlot extends Model
     use HasFactory;
 
     public function teacher(){
-        return $this->belongsTo('App\Models\Teacher','teacher_id');
+        return $this->belongsTo('App\Models\User','teacher_id');
     }
 
     //course
