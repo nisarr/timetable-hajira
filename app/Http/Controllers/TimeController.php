@@ -20,7 +20,7 @@ class TimeController extends Controller
     public function index()
     {
         $times = TimeSlot::all();
-        return view('admin.time.index',compact('times'));
+        return view('admin.timetable.index',compact('times'));
     }
 
     /**
@@ -34,7 +34,7 @@ class TimeController extends Controller
         $courses = Course::all();
         $rooms = Room::all();
         $classes = Classes::all();
-        return view('admin.time.create',compact('teachers','courses','rooms','classes'));
+        return view('admin.timetable.create',compact('teachers','courses','rooms','classes'));
     }
 
     /**
@@ -119,7 +119,7 @@ class TimeController extends Controller
         $courses = Course::all();
         $rooms = Room::all();
         $classes = Classes::all();
-        return view('admin.time.edit',compact('teachers','courses','rooms','classes','time'));
+        return view('admin.timetable.edit',compact('teachers','courses','rooms','classes','time'));
     }
 
     /**
@@ -192,6 +192,6 @@ class TimeController extends Controller
 
     public function timeshow(){
         $showtime = TimeSlot::all();
-        return view('admin.time.time',compact('showtime'));
+        return view('admin.timetable.timetable',compact('showtime'));
     }
 }

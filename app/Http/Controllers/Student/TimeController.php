@@ -28,7 +28,7 @@ class TimeController extends Controller
         ])->get();
 
         // dd($showtime);
-        return view('admin.student_time.time',compact('showtime'));
+        return view('student.timetable.timetable',compact('showtime'));
 
     }
 

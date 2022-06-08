@@ -215,7 +215,7 @@
     </section>
 
     <!-- SOCIAL MEDIA SHARE -->
-    <section>
+    {{-- <section>
         <div class="icon-float">
             <ul>
                 <li><a href="#" class="sh">1k <br> Share</a> </li>
@@ -227,4 +227,4 @@
                 <li><a href="#" class="sh1"><i class="fa fa-envelope-o" aria-hidden="true"></i></a> </li>
             </ul>
         </div>
-    </section>
+    </section> --}}

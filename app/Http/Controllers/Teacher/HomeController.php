@@ -51,6 +51,6 @@ class HomeController extends Controller
             $week_days_all[$key] = $value;
         }
      
-        return view('admin.teacher_dashboard',compact('total_classes','total_courses','week_days_all'));
+        return view('teacher.dashboard',compact('total_classes','total_courses','week_days_all'));
     }
 }

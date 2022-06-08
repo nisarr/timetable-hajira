@@ -33,6 +33,13 @@
           <div class="card">
             <div class="card-header"><i class="fa fa-table"></i>All Students</div>
             <div class="card-body">
+
+              @if(request()->has('class') && request()->has('course'))
+              <div class="alert alert-success">
+                <strong>Success!</strong> {{$students->count()}} students found.
+              </div>
+              @endif
+
               <div class="table-responsive">
               <table id="example" class="table table-bordered">
                 <thead>

@@ -16,9 +16,28 @@ class StudentController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $students = User::where('role',User::ROLE_STUDENT)->get();
+
+        $students = User::where('role',User::ROLE_STUDENT);
+        
+        if(request()->has('search')){
+            $students = $students->where('name','like','%'.request('search').'%');
+        }
+
+        // Search by class
+        if(request()->has('class')){
+            $students = $students->where('class_id',request('class'));
+        }
+
+        // Search by course
+        if(request()->has('course')){
+            $students = $students->whereHas('courses_ids',function($q){
+                $q->where('course_id',request('course'));
+            });
+        }
+
+        $students = $students->get();
         return view('admin.student.index',compact('students'));
     }
 
