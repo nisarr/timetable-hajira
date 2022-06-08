@@ -24,7 +24,7 @@
       <div class="row">
         <div class="col-lg-12">
           <div class="card">
-            <div class="card-header"><i class="fa fa-table"></i>All Rooms</div>
+            <div class="card-header"><i class="fa fa-table"></i>All Courses</div>
             <div class="card-body">
               <div class="table-responsive">
               <table id="example" class="table table-bordered">
@@ -43,7 +43,7 @@
                         <td> {{$course->id}}</td>
                         <td>{{$course->course_code}}</td>
                         <td>{{$course->course_name}}</td>
-                        <td>{{$course->teacher->teacher_name}}</td>
+                        <td>{{$course->teacher ? $course->teacher->name : ''}}</td>
                         <td>
                         <form method="POST" action="{{url('/courses/'.$course->id)}}">
                         {{ csrf_field() }}

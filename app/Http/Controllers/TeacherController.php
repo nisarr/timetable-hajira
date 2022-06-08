@@ -56,7 +56,7 @@ class TeacherController extends Controller
         $teachers->role = User::ROLE_TEACHER;
         $teachers->save();
         toastr()->success('Teacher Added successfully!');
-        return redirect('teacher');
+        return redirect('teachers');
     }
 
     /**

@@ -42,8 +42,9 @@
               <div class="form-group">
                 <label for="input-14">Teacher</label>
                <select name="teacher_id" id="" class="form-control form-control-square">
+                 <option value="" selected disabled>Select Teacher</option>
                  @foreach($teachers as $teacher)
-                 <option value="{{$teacher->id}}">{{$teacher->teacher_name}}</option>
+                 <option value="{{$teacher->id}}">{{$teacher->name}}</option>
                  @endforeach
                </select>
               </div>

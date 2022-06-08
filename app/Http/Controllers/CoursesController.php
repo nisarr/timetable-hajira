@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Course;
 use Illuminate\Http\Request;
 use App\Models\Teacher;
+use App\Models\User;
 
 class CoursesController extends Controller
 {
@@ -26,7 +27,7 @@ class CoursesController extends Controller
      */
     public function create()
     {
-        $teachers = Teacher::all();
+        $teachers = User::where('role',User::ROLE_TEACHER)->get();
         return view('admin.courses.create',compact('teachers'));
     }
 
@@ -67,8 +68,8 @@ class CoursesController extends Controller
     public function edit($id)
     {
         $course = Course::find($id);
-        // $teachers = Teacher::all();
-        return view('admin.courses.edit',compact('course'));
+        $teachers = User::where('role',User::ROLE_TEACHER)->get();
+        return view('admin.courses.edit',compact('course','teachers'));
         
     }
 

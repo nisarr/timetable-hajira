@@ -22,7 +22,7 @@
       <div class="row">
         <div class="col-lg-12">
           <div class="card">
-            <div class="card-header"><i class="fa fa-table"></i>All Class</div>
+            <div class="card-header"><i class="fa fa-table"></i>All Classes</div>
             <div class="card-body">
               <div class="table-responsive">
               <table id="example" class="table table-bordered">

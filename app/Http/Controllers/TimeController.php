@@ -7,6 +7,7 @@ use App\Models\Room;
 use App\Models\Teacher;
 use App\Models\TimeSlot;
 use App\Models\Classes;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class TimeController extends Controller
@@ -29,7 +30,7 @@ class TimeController extends Controller
      */
     public function create()
     {
-        $teachers = Teacher::all();
+        $teachers = User::where('role',User::ROLE_TEACHER)->get();
         $courses = Course::all();
         $rooms = Room::all();
         $classes = Classes::all();
@@ -114,7 +115,7 @@ class TimeController extends Controller
     {
         $time = TimeSlot::find($id);
         // dd($time);
-        $teachers = Teacher::all();
+        $teachers = User::where('role',User::ROLE_TEACHER)->get();
         $courses = Course::all();
         $rooms = Room::all();
         $classes = Classes::all();

@@ -34,8 +34,9 @@ class HomeController extends Controller
 
         
         // $week_days = $user->teacher_timeslots()->distinct('day')->select(DB::raw('COUNT(id) as total,day'))->pluck('total','day');
-        $week_days = $user->student_timeslots()->select('day', DB::raw('count(*) as total_classes'))->groupBy('day')->pluck('total_classes','day');
-        dd($week_days);
+        $week_days = $user->student_timeslots()->where('class_id',$user->class_id)->select('day', DB::raw('count(*) as total_classes'))->groupBy('day')->pluck('total_classes','day');
+        
+  
         $week_days_all = [
             'Monday' => 0,
             'Tuesday' => 0,
@@ -50,6 +51,6 @@ class HomeController extends Controller
             $week_days_all[$key] = $value;
         }
         
-        return view('admin.teacher_dashboard',compact('week_days_all'));
+        return view('student.dashboard',compact('week_days_all'));
     }
 }

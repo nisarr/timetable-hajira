@@ -44,7 +44,7 @@
                 <label for="input-14">Teacher</label>
                <select name="teacher_id" id="" class="form-control form-control-square">
                  @foreach($teachers as $teacher)
-                 <option value="{{$teacher->id}}" <?php if($course->teacher_id == $teacher->id) echo 'selected'; ?>>{{$teacher->teacher_name}}</option>
+                 <option value="{{$teacher->id}}" <?php if($course->teacher_id == $teacher->id) echo 'selected'; ?>>{{$teacher->name}}</option>
                  @endforeach
                </select>
               </div>

@@ -31,7 +31,7 @@
                     <option value="">Select a day</option>
                     <option value="Monday">Monday</option>
                     <option value="Tuesday">Tuesday</option>
-                    <option value="Wednesday">wednesday</option>
+                    <option value="Wednesday">Wednesday</option>
                     <option value="Thursday">Thursday</option>
                     <option value="Friday">Friday</option>
                     <option value="Saturday">Saturday</option>
@@ -73,7 +73,7 @@
                 <label for="input-14">Teacher<span class="text-danger">*</span></label>
                 <select name="teacher_id" id="" class="form-control" required>
                     @foreach($teachers as $teacher)
-                    <option value="{{$teacher->id}}">{{$teacher->teacher_name}}</option>
+                    <option value="{{$teacher->id}}">{{$teacher->name}}</option>
                     @endforeach
                 </select>
               </div>
