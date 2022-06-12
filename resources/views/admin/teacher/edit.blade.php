@@ -72,7 +72,7 @@
 
           <div class="form-group">
             <div class="form-footer">
-              <button type="submit" class="btn btn-danger"><i class="fa fa-times"></i> CANCEL</button>
+              <a href="{{ url('teachers') }}" class="btn btn-danger"><i class="fa fa-times"></i> CANCEL</a>
               <button type="submit" class="btn btn-success"><i class="fa fa-check-square-o"></i> SAVE</button>
             </div>
           </div>
