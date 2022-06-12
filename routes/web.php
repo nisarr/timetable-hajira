@@ -1,15 +1,16 @@
 <?php
 
-use App\Models\User;
-use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\TimeController;
-use App\Http\Controllers\RoomsController;
 use App\Http\Controllers\ClasseController;
 use App\Http\Controllers\CoursesController;
+use App\Http\Controllers\DepartmentController;
+use App\Http\Controllers\FrontendController;
+use App\Http\Controllers\RoomsController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\TeacherController;
-use App\Http\Controllers\FrontendController;
-use App\Http\Controllers\DepartmentController;
+use App\Http\Controllers\TimeController;
+use App\Http\Controllers\UserController;
+use App\Models\User;
+use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
@@ -37,7 +38,7 @@ Route::resource('students', StudentController::class)->middleware(['auth','admin
 Route::resource('courses', CoursesController::class)->middleware(['auth','admin']);
 Route::resource('timeslots', TimeController::class)->middleware(['auth','admin']);
 Route::resource('classes', ClasseController::class)->middleware(['auth','admin']);
-
+Route::resource('users', UserController::class)->middleware(['auth','admin']);
 Route::get('/timeshow', [App\Http\Controllers\TimeController::class, 'timeshow'])->middleware(['auth','admin']);
 
 

@@ -61,7 +61,7 @@
 				<a href="javascript:void()" class="btn-social btn-social-circle btn-google-plus waves-effect waves-light m-1"><i class="fa fa-google-plus"></i></a>
 				<a href="javascript:void()" class="btn-social btn-social-circle btn-twitter waves-effect waves-light m-1"><i class="fa fa-twitter"></i></a> -->
 				<hr>
-				<p class="text-muted mb-0">Do not have an account? <a href="{{url('/register')}}"> Sign Up here</a></p>
+				{{-- <p class="text-muted mb-0">Do not have an account? <a href="{{url('/register')}}"> Sign Up here</a></p> --}}
 			  </div>
 			 </form>
 		   </div>

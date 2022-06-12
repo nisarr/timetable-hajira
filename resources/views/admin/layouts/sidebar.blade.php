@@ -93,6 +93,17 @@
     </li>
     <!-- classes schedule end-->
 
+
+    <!-- classes schedule start-->
+
+    <li>
+      <a href="{{url('users')}}" class="waves-effect">
+        <i class="fa fa-users"></i>
+        <span>Users</span>
+      </a>
+    </li>
+    <!-- classes schedule end-->
+
  
 
 
